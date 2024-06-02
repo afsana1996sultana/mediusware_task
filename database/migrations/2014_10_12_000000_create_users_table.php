@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('account_type', ['admin', 'user', 'guest']); // Specify allowed values for the enum
+            $table->double('balance', 15, 2); // Set precision and scale for the double type if needed
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
